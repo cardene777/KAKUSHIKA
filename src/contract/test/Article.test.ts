@@ -11,7 +11,7 @@ describe('Article Contract', function () {
   beforeEach(async function () {
     [owner, addr1] = await ethers.getSigners();
 
-      articleContract = await ethers.deployContract('ArticleMock', [
+    articleContract = await ethers.deployContract('ArticleMock', [
         'ArticleMock', 'ARTM'
     ]) as ArticleMock;
     await articleContract.waitForDeployment();
