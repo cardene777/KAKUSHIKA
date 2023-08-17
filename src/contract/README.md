@@ -1,13 +1,29 @@
-# Sample Hardhat Project
+# Hardhat
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, and a script that deploys that contract.
+## Install Module
 
-Try running some of the following tasks:
+```sh
+$ npm install
+```
 
-```shell
-npx hardhat help
-npx hardhat test
-REPORT_GAS=true npx hardhat test
-npx hardhat node
-npx hardhat run scripts/deploy.ts
+## Compile
+
+```sh
+$ npx hardhat compile
+```
+
+## Test
+
+### Article
+
+```sh
+$ npx hardhat test test/Article.test.ts
+```
+
+## Deploy
+
+### Testnet
+
+```sh
+$ npx hardhat run --network sepolia scripts/Article.deploy.ts
 ```
