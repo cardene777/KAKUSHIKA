@@ -1,7 +1,6 @@
 "use client";
 
 import BlogCard from "@common/BlogCard";
-import Image from "next/image";
 
 import Article1 from "@assets/article1.svg";
 import Article2 from "@assets/article2.svg";

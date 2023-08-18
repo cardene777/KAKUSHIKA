@@ -7,7 +7,7 @@ import { InjectedConnector } from "wagmi/connectors/injected";
 
 import Logo from "@assets/pinterest_profile_image.png";
 
-const header = () => {
+const Header = () => {
   const { address } = useAccount();
   const { connectAsync } = useConnect({
     connector: new InjectedConnector(),
@@ -61,4 +61,4 @@ const header = () => {
   );
 };
 
-export default header;
+export default Header;
