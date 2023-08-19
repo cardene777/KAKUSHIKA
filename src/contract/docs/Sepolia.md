@@ -1,8 +1,9 @@
 # Sepolia Testnet
 
+https://sepolia.etherscan.io/
+
 ## Article Contract Address
 
-| Day | Contract Address | Transaction Hash |
-| --- | ---------------- | ---------------- |
-| 2023/08/17 | 0x0Afbb6a063CD3e438756520DcEF6C06017efBF43 |  0xfff61fb4bcbf224ddabd42f8aeba15a99bb99c6732668017f4e67c9b60e37744 |
-| 2023/08/17 | 0x21a56aDe2833F9f070a8cB50DedB1661707B5E70 |  0xfd38af5558d93ab5c33b74a36ff3de4b22ea13aaff0260b5cdc5fc7800353ab6 |
+| Day | Article Contract Address | Article Transaction Hash | Emoji Contract Address | Emoji Transaction Hash | description |
+| --- | ---------------- | ---------------- | ----------- |
+| 2023/08/19 | `0x90aa47C6aff05326142397CaA879775158475278` |  `0x7f29d5cd3d3f8ff701179b5dc9e4c622d89653e394fce8e0cbcf080ab2a653ba` | `0xD5e0FeBe286b83DEF16d352F187d1458EE357Fa9` | `0xf109bd699c56ca6e85e299e8cc08471e60f67fa0d368146e3b64c64b471ba902` | フェーズ1のテストコントラクト |

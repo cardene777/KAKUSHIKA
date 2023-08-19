@@ -23,6 +23,7 @@
       "@/*": ["./*"],
       "@assets/*": ["./public/assets/*"],
       "@common/*": ["./app/common/*"],
+      "@contracts/*": ["../contract/artifacts/contracts/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
