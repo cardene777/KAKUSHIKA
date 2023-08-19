@@ -2,39 +2,101 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { useContractRead, useContractWrite } from "wagmi";
+import {
+  CHAIN_ID,
+  ARTICLE_CONTRACT_ADDRESS,
+  EMOJI_CONTRACT_ADDRESS,
+  EMOJI1,
+  EMOJI2,
+  EMOJI3,
+} from "@common/config";
+import ABI from "@contracts/Emoji.sol/Emoji.json";
+
+const changeEmojiBytes = (emoji: string) => {
+  const textEncoder = new TextEncoder();
+  const emojiBytes = textEncoder.encode(emoji);
+
+  const emojiHex = Array.from(emojiBytes)
+    .map((byte) => byte.toString(16).padStart(2, "0"))
+    .join("");
+  return `0x${emojiHex}`;
+};
 
 interface BlogCardProps {
   imageUrl: string;
   category: string;
   description: string;
+  articleTokenId: number;
 }
 
 const BlogCard: React.FC<BlogCardProps> = ({
   imageUrl,
   category,
   description,
+  articleTokenId,
 }) => {
-    const [good, setGood] = useState<number>(0);
-    const [emoji1, setEmoji1] = useState<number>(0);
-    const [emoji2, setEmoji2] = useState<number>(0);
-    const [emoji3, setEmoji3] = useState<number>(0);
+  const abi = ABI.abi;
+  const {
+    data: emoji1Data,
+  } = useContractRead({
+    address: EMOJI_CONTRACT_ADDRESS,
+    abi,
+    chainId: CHAIN_ID,
+    functionName: "emoteCountOf",
+    args: [ARTICLE_CONTRACT_ADDRESS, articleTokenId, changeEmojiBytes(EMOJI1)],
+    watch: true,
+  });
+  const { data: emoji2Data } = useContractRead({
+    address: EMOJI_CONTRACT_ADDRESS,
+    abi,
+    chainId: CHAIN_ID,
+    functionName: "emoteCountOf",
+    args: [ARTICLE_CONTRACT_ADDRESS, articleTokenId, changeEmojiBytes(EMOJI2)],
+    watch: true,
+  });
+  const { data: emoji3Data } = useContractRead({
+    address: EMOJI_CONTRACT_ADDRESS,
+    abi,
+    chainId: CHAIN_ID,
+    functionName: "emoteCountOf",
+    args: [ARTICLE_CONTRACT_ADDRESS, articleTokenId, changeEmojiBytes(EMOJI3)],
+    watch: true,
+  });
+  const { write: emoteEmoji1 } = useContractWrite({
+    address: EMOJI_CONTRACT_ADDRESS,
+    abi,
+    functionName: "emote",
+    args: [ARTICLE_CONTRACT_ADDRESS, articleTokenId, changeEmojiBytes(EMOJI1), true],
+  });
+  const { write: emoteEmoji2 } = useContractWrite({
+    address: EMOJI_CONTRACT_ADDRESS,
+    abi,
+    functionName: "emote",
+    args: [
+      ARTICLE_CONTRACT_ADDRESS,
+      articleTokenId,
+      changeEmojiBytes(EMOJI2),
+      true,
+    ],
+  });
+  const { write: emoteEmoji3 } = useContractWrite({
+    address: EMOJI_CONTRACT_ADDRESS,
+    abi,
+    functionName: "emote",
+    args: [
+      ARTICLE_CONTRACT_ADDRESS,
+      articleTokenId,
+      changeEmojiBytes(EMOJI3),
+      true,
+    ],
+  });
 
-    const handleIncrementGood = () => {
-      setGood((prevGood) => prevGood + 1);
-    };
+  const [good, setGood] = useState<number>(0);
 
-    const handleIncrementEmoji1 = () => {
-      setEmoji1((prevEmoji) => prevEmoji + 1);
-    };
-
-    const handleIncrementEmoji2 = () => {
-      setEmoji2((prevEmoji) => prevEmoji + 1);
-    };
-
-    const handleIncrementEmoji3 = () => {
-      setEmoji3((prevEmoji) => prevEmoji + 1);
-    };
-
+  const handleIncrementGood = () => {
+    setGood((prevGood) => prevGood + 1);
+  };
 
   return (
     <div className="p-4 md:w-1/3">
@@ -68,31 +130,31 @@ const BlogCard: React.FC<BlogCardProps> = ({
               <button
                 type="button"
                 className="mr-1"
-                onClick={handleIncrementEmoji1}
+                onClick={() => emoteEmoji1()}
               >
-                🥰
+                {EMOJI1}
               </button>
-              {emoji1}
+              {Number(emoji1Data)}
             </span>
             <span className="text-gray-400 mr-3 inline-flex items-center leading-none text-sm py-1">
               <button
                 type="button"
                 className="mr-1"
-                onClick={handleIncrementEmoji2}
+                onClick={() => emoteEmoji2()}
               >
-                ✨
+                {EMOJI2}
               </button>
-              {emoji2}
+              {Number(emoji2Data)}
             </span>
             <span className="text-gray-400 mr-3 inline-flex items-center leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
               <button
                 type="button"
                 className="mr-1"
-                onClick={handleIncrementEmoji3}
+                onClick={() => emoteEmoji3()}
               >
-                🤩
+                {EMOJI3}
               </button>
-              {emoji3}
+              {Number(emoji3Data)}
             </span>
             <span className="text-gray-400 inline-flex items-center leading-none text-sm">
               <button

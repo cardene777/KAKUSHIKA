@@ -8,4 +8,12 @@ contract Article is ERC6150 {
         string memory name_,
         string memory symbol_
     ) ERC6150(name_, symbol_) {}
+
+    function safeMintWithParent(
+        address to,
+        uint256 parentId,
+        uint256 tokenId
+    ) public {
+        _safeMintWithParent(to, parentId, tokenId, "");
+    }
 }
