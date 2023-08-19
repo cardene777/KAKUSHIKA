@@ -41,3 +41,13 @@ $ npx hardhat run --network sepolia scripts/Article.deploy.ts
 ```sh
 $ npx hardhat run --network sepolia scripts/Emoji.deploy.ts
 ```
+
+#### Sample
+
+```sh
+$ npx hardhat run --network sepolia scripts/sample/Test.deploy.ts
+```
+
+## Contract Address
+
+- [Contract Address](./docs/Sepolia.md)

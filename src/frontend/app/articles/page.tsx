@@ -21,16 +21,19 @@ const Articles = () => {
             imageUrl={Article1}
             category="ERC"
             description={description1}
+            articleTokenId={2}
           />
           <BlogCard
             imageUrl={Article2}
             category="Ethereum"
             description={description2}
+            articleTokenId={3}
           />
           <BlogCard
             imageUrl={Article3}
             category="Bitcoin"
             description={description3}
+            articleTokenId={4}
           />
         </div>
       </div>
