@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import NextLink from "next/link";
 import Image from "next/image";
 import { useContractRead, useContractWrite } from "wagmi";
 import {
@@ -12,6 +13,7 @@ import {
   EMOJI3,
 } from "@common/config";
 import ABI from "@contracts/Emoji.sol/Emoji.json";
+import collectionReference from "@common/polybaseConfig";
 
 const changeEmojiBytes = (emoji: string) => {
   const textEncoder = new TextEncoder();
@@ -24,22 +26,24 @@ const changeEmojiBytes = (emoji: string) => {
 };
 
 interface BlogCardProps {
+  id: number;
   imageUrl: string;
   category: string;
   description: string;
   articleTokenId: number;
+  good: number;
 }
 
 const BlogCard: React.FC<BlogCardProps> = ({
+  id,
   imageUrl,
   category,
   description,
   articleTokenId,
+  good,
 }) => {
   const abi = ABI.abi;
-  const {
-    data: emoji1Data,
-  } = useContractRead({
+  const { data: emoji1Data } = useContractRead({
     address: EMOJI_CONTRACT_ADDRESS,
     abi,
     chainId: CHAIN_ID,
@@ -67,7 +71,12 @@ const BlogCard: React.FC<BlogCardProps> = ({
     address: EMOJI_CONTRACT_ADDRESS,
     abi,
     functionName: "emote",
-    args: [ARTICLE_CONTRACT_ADDRESS, articleTokenId, changeEmojiBytes(EMOJI1), true],
+    args: [
+      ARTICLE_CONTRACT_ADDRESS,
+      articleTokenId,
+      changeEmojiBytes(EMOJI1),
+      true,
+    ],
   });
   const { write: emoteEmoji2 } = useContractWrite({
     address: EMOJI_CONTRACT_ADDRESS,
@@ -92,10 +101,8 @@ const BlogCard: React.FC<BlogCardProps> = ({
     ],
   });
 
-  const [good, setGood] = useState<number>(0);
-
-  const handleIncrementGood = () => {
-    setGood((prevGood) => prevGood + 1);
+  const goodArticle = async () => {
+    const recordData = await collectionReference.record(id.toString()).call("good");
   };
 
   return (
@@ -111,7 +118,10 @@ const BlogCard: React.FC<BlogCardProps> = ({
           </h1>
           <p className="leading-relaxed mb-3">{description}</p>
           <div className="flex items-center flex-wrap">
-            <a className="text-green-500 inline-flex items-center md:mb-2 lg:mb-0">
+            <NextLink
+              href={`/articles/${id}/?token=${articleTokenId}`}
+              className="text-green-500 inline-flex items-center md:mb-2 lg:mb-0"
+            >
               詳細を見る
               <svg
                 className="w-4 h-4 ml-2"
@@ -125,8 +135,8 @@ const BlogCard: React.FC<BlogCardProps> = ({
                 <path d="M5 12h14"></path>
                 <path d="M12 5l7 7-7 7"></path>
               </svg>
-            </a>
-            <span className="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm py-1">
+            </NextLink>
+            <span className="text-gray-400 mr-3 inline-flex items-center lg:ml-auto md:ml-0 ml-auto leading-none text-sm py-1" suppressHydrationWarning={true}>
               <button
                 type="button"
                 className="mr-1"
@@ -136,7 +146,10 @@ const BlogCard: React.FC<BlogCardProps> = ({
               </button>
               {Number(emoji1Data)}
             </span>
-            <span className="text-gray-400 mr-3 inline-flex items-center leading-none text-sm py-1">
+            <span
+              className="text-gray-400 mr-3 inline-flex items-center leading-none text-sm py-1"
+              suppressHydrationWarning={true}
+            >
               <button
                 type="button"
                 className="mr-1"
@@ -146,7 +159,10 @@ const BlogCard: React.FC<BlogCardProps> = ({
               </button>
               {Number(emoji2Data)}
             </span>
-            <span className="text-gray-400 mr-3 inline-flex items-center leading-none text-sm pr-3 py-1 border-r-2 border-gray-200">
+            <span
+              className="text-gray-400 mr-3 inline-flex items-center leading-none text-sm pr-3 py-1 border-r-2 border-gray-200"
+              suppressHydrationWarning={true}
+            >
               <button
                 type="button"
                 className="mr-1"
@@ -160,7 +176,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
               <button
                 type="button"
                 className="mr-1"
-                onClick={handleIncrementGood}
+                onClick={goodArticle}
               >
                 👍
               </button>
