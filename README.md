@@ -1,7 +1,7 @@
 # KAKUSHIKA
 
 - Output to Earnプラットフォーム
-- アウトプットして稼ごう！
+- アウトプットをどんどんして稼ごう！
 
 ## Product
 
@@ -15,15 +15,13 @@ https://github.com/cardene777/KAKUSHIKA/assets/61857866/1965c29c-adde-44a3-9f65-
 
 ![home.png](./assets/home.png)
 
-### Articles
+### 記事一覧ページ
 
 ![articles.png](./assets/articles.png)
 
-## How to use
+### 記事詳細ページ
 
-- [article](https://kakushika.vercel.app/articles)
-
-![description.png](./assets/description.png)
+![article.png](./assets/article.png)
 
 ## ドキュメント
 
@@ -51,6 +49,10 @@ https://github.com/cardene777/KAKUSHIKA/assets/61857866/1965c29c-adde-44a3-9f65-
 - Next.js
 - Typescript
 - TailwindCSS
+
+### DB
+
+- [Polybase](https://polybase.xyz/)
 
 ### ホスティング
 
