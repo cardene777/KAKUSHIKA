@@ -20,8 +20,8 @@ async function main() {
   const emoji2 = Buffer.from("🤩");
   const emoji3 = Buffer.from("🚀");
 
-    const tokenName = "Article"
-    const symbol = "ART"
+  const tokenName = "Article";
+  const symbol = "ART";
   const ArticleContract = await ethers.deployContract("Article", [
     tokenName,
     symbol,
@@ -46,9 +46,13 @@ async function main() {
   console.log(`Tx Hash: ${emojiContractTx?.hash}`);
 
   await articleContract.safeMintWithParent(authorAddress, 0, 1);
+  console.log("mint parent nft ok");
   await articleContract.safeMintWithParent(authorAddress, 1, 2);
+  console.log("mint child 2 nft ok");
   await articleContract.safeMintWithParent(authorAddress, 1, 3);
+  console.log("mint child 3 nft ok");
   await articleContract.safeMintWithParent(authorAddress, 1, 4);
+  console.log("mint child 4 nft ok");
 
   await emojiContract
     .connect(user1)
@@ -58,7 +62,7 @@ async function main() {
       [emoji1, emoji2, emoji3],
       [true, true, true]
     );
-  console.log("🥰🤩🚀 OK")
+  console.log("🥰🤩🚀 OK");
   await emojiContract
     .connect(user2)
     .bulkEmote(
@@ -66,7 +70,7 @@ async function main() {
       [2, 3, 4],
       [emoji3, emoji2, emoji1],
       [true, true, true]
-  );
+    );
   console.log("🥰🤩🚀 OK");
   await emojiContract
     .connect(user3)
@@ -75,7 +79,7 @@ async function main() {
       [2, 3, 4],
       [emoji2, emoji3, emoji1],
       [true, true, true]
-  );
+    );
   console.log("🥰🤩🚀 OK");
 }
 
