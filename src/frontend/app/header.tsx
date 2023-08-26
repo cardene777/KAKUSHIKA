@@ -1,21 +1,48 @@
 "use client";
 
+import { useEffect } from "react"
 import Link from "next/link";
 import Image from "next/image";
 import { useAccount, useConnect } from "wagmi";
 import { InjectedConnector } from "wagmi/connectors/injected";
+import { createWalletClient, custom } from "viem";
+import { sepolia } from "@wagmi/core/chains";
 
 import Logo from "@assets/pinterest_profile_image.png";
 
+// declare global {
+//   interface Window {
+//     ethereum?: any
+//   }
+// }
+
 const Header = () => {
+  // const walletClient = createWalletClient({
+  //   chain: sepolia,
+  //   transport: custom(window?.ethereum),
+  // });
   const { address } = useAccount();
-  const { connectAsync } = useConnect({
+  const { connect, connectAsync } = useConnect({
+    chainId: sepolia.id,
     connector: new InjectedConnector(),
   });
 
   const handleWalletConnect = async () => {
     await connectAsync();
   };
+
+  const connectChain = async () => {
+    try {
+      // await walletClient.addChain({ chain: sepolia });
+      connect();
+    } catch (err) {
+      console.log();
+    }
+  };
+
+  useEffect(() => {
+    if (!address) connectChain();
+  }, [address]);
 
   return (
     <header className="bg-cyan-800 body-font">
