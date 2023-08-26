@@ -7,7 +7,7 @@
 
 - [https://kakushika.vercel.app/](https://kakushika.vercel.app/)
 
-https://github.com/cardene777/KAKUSHIKA/assets/61857866/1965c29c-adde-44a3-9f65-10d07307bf40
+https://github.com/cardene777/KAKUSHIKA/assets/61857866/1ae6dcfa-8d70-4084-83d5-a26f76b41476
 
 ## Page
 
