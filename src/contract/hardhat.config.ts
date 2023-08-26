@@ -11,26 +11,19 @@ const config: HardhatUserConfig = {
   defaultNetwork: "hardhat",
   networks: {
     hardhat: {},
-    goerli: {
-      url: `https://goerli.infura.io/v3/${INFURA_KEY}`,
-      accounts: [`0x${PRIVATE_KEY}`],
-      chainId: 5,
-    },
     sepolia: {
       url: `https://sepolia.infura.io/v3/${INFURA_KEY}`,
       accounts: [`0x${PRIVATE_KEY}`],
     },
-    mainnet: {
-      url: `https://mainnet.infura.io/v3/${INFURA_KEY}`,
-      chainId: 1,
+    shibuya: {
+      url: "https://evm.shibuya.astar.network/",
+      chainId: 81,
+      accounts: [`0x${PRIVATE_KEY}`],
     },
-    mumbai: {
-      url: "https://rpc-mumbai.maticvigil.com/",
-      chainId: 80001,
-    },
-    matic: {
-      url: `https://polygon-mainnet.infura.io/v3/${INFURA_KEY}`,
-      chainId: 137,
+    astar: {
+      url: "https://evm.astar.network",
+      chainId: 592,
+      accounts: [`0x${PRIVATE_KEY}`],
     },
   },
   solidity: {
