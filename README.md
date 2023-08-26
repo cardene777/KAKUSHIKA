@@ -44,11 +44,17 @@ https://github.com/cardene777/KAKUSHIKA/assets/61857866/1ae6dcfa-8d70-4084-83d5-
 - Hardhat
 - Solidity
 - Typescript
+
 ### フロントエンド
 
 - Next.js
 - Typescript
 - TailwindCSS
+
+#### ライブラリ
+
+- wagmi
+- viem
 
 ### DB
 
