@@ -1,8 +1,7 @@
 # KAKUSHIKA
 
 - Output to Earnプラットフォーム
-- アウトプットをどんどんして稼ごう！
-
+- アウトプットをして報酬を受け取ろう。
 ## Product
 
 - [https://kakushika.vercel.app/](https://kakushika.vercel.app/)
