@@ -6,7 +6,7 @@
 
 - [https://kakushika.vercel.app/](https://kakushika.vercel.app/)
 
-https://github.com/cardene777/KAKUSHIKA/assets/61857866/1ae6dcfa-8d70-4084-83d5-a26f76b41476
+https://github.com/cardene777/KAKUSHIKA/assets/61857866/d25b2f9d-e646-4ca1-bf41-104eb1b36065
 
 https://www.canva.com/design/DAFspKnu__Y/DBe3KqAv_rtUadm-K3Dmqw/view?utm_content=DAFspKnu__Y&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink
 
