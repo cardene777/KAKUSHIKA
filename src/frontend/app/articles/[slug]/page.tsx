@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import {
   useAccount,
   useConnect,
@@ -42,13 +43,13 @@ const Article = ({
   searchParams,
 }: {
   params: { slug: string };
-  searchParams: { token: number };
+  searchParams: { token: number, id: number };
 }) => {
   const { address } = useAccount();
   const { connect } = useConnect({
     connector: new InjectedConnector(),
   });
-
+  const router = useRouter();
 
 
   const { data: emoji1Data } = useContractRead({
@@ -148,6 +149,17 @@ const Article = ({
     }
   };
 
+  const deleteRecord = async () => {
+    if (address) {
+      await collectionReference
+        .record(
+          params.slug
+        )
+        .call("del");
+      router.push("/articles");
+    }
+  };
+
   useEffect(() => {
     try {
       if (address) {
@@ -156,7 +168,7 @@ const Article = ({
         connect();
       }
     } catch (err) {}
-  }, [address]);
+  }, [address, connect, getArticle]);
 
   return (
     <div className="flex justify-center mt-10 mb-20">
@@ -165,7 +177,7 @@ const Article = ({
         <p className="mt-8 p-4 text-lg border-2 rounded-lg border-slate-500 border-opacity-50 shadow-md shadow-slate-600">
           {summary}
         </p>
-        <p className="prose dark:prose-invert mt-8 p-4 text-lg border-2 rounded-lg border-slate-500 border-opacity-50 shadow-md shadow-slate-600">
+        <p className="prose mt-8 p-4 text-lg border-2 rounded-lg border-slate-500 border-opacity-50 shadow-md shadow-slate-600 text-gray-600">
           <ReactMarkdown
             remarkPlugins={[remarkGfm, remarkMath]}
             rehypePlugins={[rehypeKatex]}
@@ -223,6 +235,15 @@ const Article = ({
             {Number(good) || 0}
           </p>
         </div>
+      <div className="flex container mt-10 mx-auto">
+        <button
+          type="button"
+            className="p-2 mr-4 border-gray-600 hover:bg-gray-200 border-4 rounded-lg text-gray-600 text-lg font-semibold"
+          onClick={deleteRecord}
+        >
+          Delete
+        </button>
+      </div>
       </div>
     </div>
   );

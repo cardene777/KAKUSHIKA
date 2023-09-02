@@ -1,10 +1,11 @@
 "use client";
 
-import { createConfig, configureChains, mainnet, sepolia } from "wagmi";
+import { createConfig, configureChains } from "wagmi";
 import { publicProvider } from "wagmi/providers/public";
+import { astar, shibuya } from "./Chain";
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
-  [mainnet, sepolia],
+  [astar, shibuya],
   [publicProvider()]
 );
 

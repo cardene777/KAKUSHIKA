@@ -45,42 +45,42 @@ async function main() {
   console.log(`Emoji Contract Address: ${await emojiContract.getAddress()}`);
   console.log(`Tx Hash: ${emojiContractTx?.hash}`);
 
-  await articleContract.safeMintWithParent(authorAddress, 0, 1);
+  await articleContract.safeMintWithParent(authorAddress, 0);
   console.log("mint parent nft ok");
-  await articleContract.safeMintWithParent(authorAddress, 1, 2);
-  console.log("mint child 2 nft ok");
-  await articleContract.safeMintWithParent(authorAddress, 1, 3);
-  console.log("mint child 3 nft ok");
-  await articleContract.safeMintWithParent(authorAddress, 1, 4);
-  console.log("mint child 4 nft ok");
+  // await articleContract.safeMintWithParent(authorAddress, 1);
+  // console.log("mint child 2 nft ok");
+  // await articleContract.safeMintWithParent(authorAddress, 1);
+  // console.log("mint child 3 nft ok");
+  // await articleContract.safeMintWithParent(authorAddress, 1);
+  // console.log("mint child 4 nft ok");
 
-  await emojiContract
-    .connect(user1)
-    .bulkEmote(
-      [articleContractAddress, articleContractAddress, articleContractAddress],
-      [2, 3, 4],
-      [emoji1, emoji2, emoji3],
-      [true, true, true]
-    );
-  console.log("🥰🤩🚀 OK");
-  await emojiContract
-    .connect(user2)
-    .bulkEmote(
-      [articleContractAddress, articleContractAddress, articleContractAddress],
-      [2, 3, 4],
-      [emoji3, emoji2, emoji1],
-      [true, true, true]
-    );
-  console.log("🥰🤩🚀 OK");
-  await emojiContract
-    .connect(user3)
-    .bulkEmote(
-      [articleContractAddress, articleContractAddress, articleContractAddress],
-      [2, 3, 4],
-      [emoji2, emoji3, emoji1],
-      [true, true, true]
-    );
-  console.log("🥰🤩🚀 OK");
+  // await emojiContract
+  //   .connect(user1)
+  //   .bulkEmote(
+  //     [articleContractAddress, articleContractAddress, articleContractAddress],
+  //     [2, 3, 4],
+  //     [emoji1, emoji2, emoji3],
+  //     [true, true, true]
+  //   );
+  // console.log("🥰🤩🚀 OK");
+  // await emojiContract
+  //   .connect(user2)
+  //   .bulkEmote(
+  //     [articleContractAddress, articleContractAddress, articleContractAddress],
+  //     [2, 3, 4],
+  //     [emoji3, emoji2, emoji1],
+  //     [true, true, true]
+  //   );
+  // console.log("🥰🤩🚀 OK");
+  // await emojiContract
+  //   .connect(user3)
+  //   .bulkEmote(
+  //     [articleContractAddress, articleContractAddress, articleContractAddress],
+  //     [2, 3, 4],
+  //     [emoji2, emoji3, emoji1],
+  //     [true, true, true]
+  //   );
+  // console.log("🥰🤩🚀 OK");
 }
 
 main().catch((error) => {
