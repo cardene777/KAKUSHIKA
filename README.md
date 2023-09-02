@@ -1,13 +1,14 @@
 # KAKUSHIKA
 
 - Output to Earnプラットフォーム
-- アウトプットをどんどんして稼ごう！
-
+- アウトプットをして報酬を受け取ろう。
 ## Product
 
 - [https://kakushika.vercel.app/](https://kakushika.vercel.app/)
 
 https://github.com/cardene777/KAKUSHIKA/assets/61857866/1ae6dcfa-8d70-4084-83d5-a26f76b41476
+
+https://www.canva.com/design/DAFspKnu__Y/DBe3KqAv_rtUadm-K3Dmqw/view?utm_content=DAFspKnu__Y&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink
 
 ## Page
 
@@ -59,6 +60,7 @@ https://github.com/cardene777/KAKUSHIKA/assets/61857866/1ae6dcfa-8d70-4084-83d5-
 ### DB
 
 - [Polybase](https://polybase.xyz/)
+- [Polybase Explorer](https://explorer.testnet.polybase.xyz/)
 
 ### ホスティング
 
