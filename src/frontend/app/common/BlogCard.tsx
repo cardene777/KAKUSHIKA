@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import NextLink from "next/link";
 import Image from "next/image";
 import { useContractRead, useContractWrite } from "wagmi";
@@ -102,7 +101,7 @@ const BlogCard: React.FC<BlogCardProps> = ({
   });
 
   const goodArticle = async () => {
-    const recordData = await collectionReference.record(id.toString()).call("good");
+    await collectionReference.record(id.toString()).call("good");
   };
 
   return (

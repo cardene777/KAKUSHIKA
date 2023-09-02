@@ -23,6 +23,7 @@
       "@/*": ["./*"],
       "@assets/*": ["./public/assets/*"],
       "@common/*": ["./app/common/*"],
+      "@lib/*": ["./app/lib/*"],
       "@contracts/*": ["../contract/artifacts/contracts/*"],
     }
   },

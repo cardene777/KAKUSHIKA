@@ -1,5 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import Provider from "@common/ChakraProvider";
 import { Inter } from "next/font/google";
 import Header from "./header";
 import { WagmiConfig } from "wagmi";
@@ -22,8 +23,10 @@ export default function RootLayout({
       <head />
       <body className={inter.className}>
         <WagmiConfig config={config}>
-          <Header />
-          {children}
+          <Provider>
+            <Header />
+            {children}
+          </Provider>
         </WagmiConfig>
       </body>
     </html>
