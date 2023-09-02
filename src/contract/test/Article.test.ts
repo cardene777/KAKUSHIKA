@@ -30,7 +30,7 @@ describe('Article Contract', function () {
   // Example test for parentOf function
     it('should return the correct parent ID', async function () {
       const addr1Address = await addr1.getAddress()
-    await articleContract.safeMintWithParent(addr1Address, 0, 1);
+    await articleContract.safeMintWithParent(addr1Address, 0);
     const parentId = await articleContract.parentOf(1);
     expect(parentId).to.equal(0);
   });
@@ -38,8 +38,8 @@ describe('Article Contract', function () {
   // Example test for childrenOf function
   it('should return the correct children IDs', async function () {
   const addr1Address = await addr1.getAddress();
-  await articleContract.safeMintWithParent(addr1Address, 0, 1); // Mint a parent token with ID 1
-  await articleContract.safeMintWithParent(addr1Address, 1, 2);
+  await articleContract.safeMintWithParent(addr1Address, 0); // Mint a parent token with ID 1
+  await articleContract.safeMintWithParent(addr1Address, 1);
   const childrenIds = await articleContract.childrenOf(1);
   expect(childrenIds).to.deep.equal([2]);
 });
